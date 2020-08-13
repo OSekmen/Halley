@@ -1,6 +1,0 @@
-{
-    "sketch": "Halley_OS\\Halley_OS.ino",
-    "board": "arduino:avr:micro",
-    "programmer": "AVRISP mkII",
-    "port": "COM7"
-}

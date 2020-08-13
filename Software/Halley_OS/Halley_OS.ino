@@ -1,6 +1,7 @@
 #include <Servo.h>
 #include <arduino.h>
-#include <Flap.h>
+#include "lib\Flap.h"
+#include "lib\Flap.cpp"
 
 #define THROTTLE_PIN A0
 #define ROLL_PIN A3
@@ -12,18 +13,18 @@
 #define SERVO_3 5
 #define SERVO_4 3
 
-Flap Flap1(45,135,SERVO_1);
-Flap Flap2(45,135,SERVO_2);
-Flap Flap3(45,135,SERVO_3);
-Flap Flap4(45,135,SERVO_4);
+Flap Flap1(45, 135, SERVO_1);
+Flap Flap2(45, 135, SERVO_2);
+Flap Flap3(45, 135, SERVO_3);
+Flap Flap4(45, 135, SERVO_4);
 
 int throttle;
 int roll;
 int yaw;
 int pitch;
 
-
-void setup() {
+void setup()
+{
   Serial.begin(9600);
   pinMode(THROTTLE_PIN, INPUT);
   pinMode(ROLL_PIN, INPUT);
@@ -39,7 +40,8 @@ void setup() {
   Flap4.servoBegin();
 }
 
-void loop() {
+void loop()
+{
   throttle = analogRead(THROTTLE_PIN);
   roll = analogRead(ROLL_PIN);
   yaw = analogRead(YAW_PIN);
@@ -53,9 +55,13 @@ void loop() {
   Serial.print("  pitch: ");
   Serial.println(pitch);
 
-  Flap1.drive(roll,0,715);
-  Flap2.drive(roll,0,715);
-  Flap3.drive(roll,0,715);
-  Flap4.drive(roll,0,715);
+
+  Flap1.drive(yaw, 0, 715);
+  Flap2.drive(pitch, 0, 715);
+  Flap3.drive(yaw, 0, 715);
+  Flap4.drive(pitch, 0, 715);
+  Serial.print(Flap1.getPos());
+  Serial.print("   ");
+  Serial.println(Flap3.getPos());
   delay(1);
 }

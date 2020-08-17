@@ -13,8 +13,8 @@ Flap::Flap(int minAngle, int maxAngle, int servoNumber)
 void Flap::begin()
 {
     pinMode(servoNumber, OUTPUT);
-    servo.attach(servoNumber);
-    servo.write(pos);
+    //servo.attach(servoNumber);
+    //servo.write(pos);
 }
 
 int Flap::getPos()
@@ -34,40 +34,6 @@ void Flap::drive(int input, int minInputPWM, int maxInputPWM)
     controlPos = pos - 90;
     if (pos >= minAngle && pos <= maxAngle && pos != 0)
     {
-        servo.write(pos);
-    }
-}
-
-Controller::Controller(int ThrottlePin, int YawPin, int PitchPin, int RollPin)
-{
-    this->ThrottlePin = ThrottlePin;
-    this->YawPin = YawPin;
-    this->PitchPin = PitchPin;
-    this->RollPin = RollPin;
-}
-
-int Controller::getThrottle()
-{
-    return analogRead(ThrottlePin);
-}
-int Controller::getYaw()
-{
-    return analogRead(YawPin);
-}
-int Controller::getPitch()
-{
-    return analogRead(PitchPin);
-}
-int Controller::getRoll()
-{
-    return analogRead(RollPin);
-}
-
-void Controller::begin()
-{
-    int flag = 0;
-    while (flag == 0)
-    {
-        Serial.println(getPitch());
+        //servo.write(pos);
     }
 }

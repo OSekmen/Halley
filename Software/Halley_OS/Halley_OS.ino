@@ -124,7 +124,7 @@ ISR(TIMER1_COMPA_vect)
     {
       OCR1A = (ppm[cur_chan_numb] - PULSE_LENGTH) * 2;
       calc_rest = calc_rest + ppm[cur_chan_numb];
-      cur_chan_numb++;
+      cur_chan_numb++; 
     }
   }
 }
